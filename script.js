@@ -18,8 +18,11 @@ class Explosion {
     this.frame = 0;
     this.timer = 0;
     this.angle = Math.random() * 6.2;
+    this.sound = new Audio();
+    this.sound.src = './sound/Fire impact 1.wav';
   }
   update() {
+    this.frame === 0 && this.sound.play();
     this.timer++;
     this.timer % 10 === 0 && this.frame++;
   }
@@ -45,6 +48,10 @@ class Explosion {
 window.addEventListener('click', (e) => {
   createAnimation(e);
 });
+
+// window.addEventListener('mousemove', (e) => {
+//   createAnimation(e);
+// });
 
 function createAnimation(e) {
   let positionX = e.x - canvasPosition.left;
